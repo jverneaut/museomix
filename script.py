@@ -26,18 +26,10 @@ def sensorCallback(channel):
         for item in videos:
             if item['pin'] == channel:
                 player.play_item_at_index(index)
-                # print('Playing video ' + str(channel))
-                # item['player'].play()
 
             index += 1
-    # else:
-    #     for item in videos:
-    #         if item['pin'] == channel:
-    #             # print('Stopping video ' + str(channel))
-    #             item['player'].pause()
 
 for video in videos:
-    # video['player'] = vlc.MediaPlayer(video['media_path'])
     GPIO.setup(video['pin'], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.add_event_detect(video['pin'], GPIO.BOTH, callback=sensorCallback, bouncetime=200)
 
@@ -50,5 +42,4 @@ try:
 
 except KeyboardInterrupt:
     mp.release()
-    video.stop()
     GPIO.cleanup()
