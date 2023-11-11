@@ -38,7 +38,8 @@ import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+# GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(12, GPIO.IN)
 
 # GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback)
 
@@ -47,8 +48,9 @@ GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 button_pushed = False
 
 while True:
-    print("Listening")
-    print(GPIO.input(10))
+    # print("Listening")
+    # print(GPIO.input(10))
+    print(GPIO.input(12))
     # if GPIO.input(10) == GPIO.HIGH and button_pushed == False:
     #     button_pushed = True
     #     print("Button down")
@@ -57,6 +59,6 @@ while True:
     #     button_pushed = False
     #     print("Button up")
 
-    time.sleep(1)
+    # time.sleep(1)
 
 # GPIO.cleanup()
