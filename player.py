@@ -48,8 +48,6 @@ GPIO.cleanup()
 button_pushed = False
 
 while True:
-    time.sleep(0.1)
-
     if GPIO.input(10) == GPIO.HIGH and button_pushed == False:
         button_pushed = True
         print("Button down")
@@ -57,3 +55,5 @@ while True:
     if GPIO.input(10) == GPIO.LOW and button_pushed == True:
         button_pushed = False
         print("Button up")
+
+    time.sleep(1)
