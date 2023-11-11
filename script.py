@@ -6,12 +6,12 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
 videos = [
-    {'media': vlc.MediaPlayer('sample.mp4'), 'pin': 11},
-    {'media': vlc.MediaPlayer('sample-2.mp4'), 'pin': 13},
+    {'media_path': 'sample.mp4', 'pin': 11},
+    {'media_path': 'sample-2.mp4', 'pin': 13},
 ]
 
 for video in videos:
-    video['player'] = vlc.MediaPlayer(video['media'].get_mrl())
+    video['player'] = vlc.MediaPlayer(video['media_path'])
 
     def sensorCallback(channel):
         if GPIO.input(video['pin']):
