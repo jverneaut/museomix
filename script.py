@@ -14,11 +14,13 @@ def sensorCallback(channel):
     if GPIO.input(channel):
         for item in videos:
             if item['pin'] == channel:
+                # print('Playing video ' + str(channel))
                 item['player'].play()
     else:
         for item in videos:
             if item['pin'] == channel:
-                item['player'].play()
+                # print('Stopping video ' + str(channel))
+                item['player'].pause()
 
 for video in videos:
     video['player'] = vlc.MediaPlayer(video['media_path'])
