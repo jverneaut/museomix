@@ -10,7 +10,7 @@ vlc_player = vlc_instance.media_player_new()
 
 videos = [
     { 'media': vlc_instance.media_new('sample.mp4'), 'pin': 11 },
-    { 'path': vlc_instance.media_new('sample-2.mp4'), 'pin': 13 },
+    { 'media': vlc_instance.media_new('sample-2.mp4'), 'pin': 13 },
 ]
 
 for video in videos:
