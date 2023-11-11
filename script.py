@@ -10,7 +10,7 @@ videos = [
     {'media_path': 'sample-2.mp4', 'pin': 13},
 ]
 
-instance = vlc.Instance('--no-xlib')
+instance = vlc.Instance('--no-xlib --quiet')
 player = instance.media_list_player_new()
 
 media_list = []
