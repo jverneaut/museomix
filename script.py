@@ -3,14 +3,14 @@ import time
 import RPi.GPIO as GPIO
 
 GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
+GPIO.setmode(GPIO.BOARD)
 
 vlc_instance = vlc.Instance('--no-xlib')
 vlc_player = vlc_instance.media_player_new()
 
 videos = [
-    { 'path': 'sample.mp4', 'pin': 17 },
-    { 'path': 'sample-2.mp4', 'pin': 19 },
+    { 'path': 'sample.mp4', 'pin': 11 },
+    { 'path': 'sample-2.mp4', 'pin': 13 },
 ]
 
 for video in videos:
