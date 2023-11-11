@@ -12,15 +12,17 @@ videos = [
 
 def sensorCallback(channel):
     if GPIO.input(video['pin']):
-        for item in videos:
-            if item['pin'] == channel:
-                item['player'].play()
+        print(channel + ' play')
+        # for item in videos:
+            # if item['pin'] == channel:
+            #     item['player'].play()
     else:
-        for item in videos:
-            item['player'].pause()
+        print(channel + ' pause')
+        # for item in videos:
+        #     item['player'].pause()
 
 for video in videos:
-    video['player'] = vlc.MediaPlayer(video['media_path'])
+    # video['player'] = vlc.MediaPlayer(video['media_path'])
 
     GPIO.setup(video['pin'], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.add_event_detect(video['pin'], GPIO.BOTH, callback=sensorCallback, bouncetime=200)
@@ -28,8 +30,8 @@ for video in videos:
 try:
     while True:
         time.sleep(1)
+
 except KeyboardInterrupt:
-    # Cleanup on program exit
     for video in videos:
         video['player'].stop()
     GPIO.cleanup()
