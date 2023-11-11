@@ -12,12 +12,12 @@ videos = [
 
 def sensorCallback(channel):
     if GPIO.input(video['pin']):
-        print(channel + ' play')
+        print(str(channel) + ' play')
         # for item in videos:
             # if item['pin'] == channel:
             #     item['player'].play()
     else:
-        print(channel + ' pause')
+        print(str(channel) + ' pause')
         # for item in videos:
         #     item['player'].pause()
 
