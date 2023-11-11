@@ -20,6 +20,8 @@ for video in videos:
         print(channel)
         if GPIO.input(video['pin']):
             for item in videos:
+                print(item['pin'])
+                print(item['media'])
                 if item['pin'] == channel:
                     vlc_player.set_media(item['media'])
                     vlc_player.play()
