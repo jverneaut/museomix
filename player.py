@@ -42,18 +42,18 @@ GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback)
 
-message = input("Press enter to quit\n\n")
+# message = input("Press enter to quit\n\n")
 
 button_pushed = False
 
 while True:
     print("Listening")
-    if GPIO.input(10) == GPIO.HIGH:
-        # button_pushed = True
+    if GPIO.input(10) == GPIO.HIGH and button_pushed == False:
+        button_pushed = True
         print("Button down")
 
-    if GPIO.input(10) == GPIO.LOW:
-        # button_pushed = False
+    if GPIO.input(10) == GPIO.LOW and button_pushed == True:
+        button_pushed = False
         print("Button up")
 
     time.sleep(1)
