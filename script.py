@@ -13,7 +13,8 @@ videos = [
 ]
 
 for video in videos:
-    def sensorCallback():
+    def sensorCallback(channel):
+        print(channel)
         if GPIO.input(video['pin']):
             print("HIGH")
         else:
