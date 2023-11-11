@@ -9,19 +9,14 @@ vlc_instance = vlc.Instance('--no-xlib')
 vlc_player = vlc_instance.media_player_new()
 
 videos = [
-    { 'path': 'sample.mp4', 'pin': 11 },
-    { 'path': 'sample-2.mp4', 'pin': 13 },
+    { 'media': vlc_instance.media_new('sample.mp4'), 'pin': 11 },
+    { 'path': vlc_instance.media_new('sample-2.mp4'), 'pin': 13 },
 ]
 
 for video in videos:
-    video['media'] = vlc_instance.media_new(video['path'])
-
     def sensorCallback(channel):
-        print(channel)
         if GPIO.input(video['pin']):
             for item in videos:
-                print(item['pin'])
-                print(item['media'])
                 if item['pin'] == channel:
                     vlc_player.set_media(item['media'])
                     vlc_player.play()
