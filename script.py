@@ -49,6 +49,6 @@ try:
         time.sleep(1)
 
 except KeyboardInterrupt:
-    for video in videos:
-        video['player'].stop()
+    mp.release()
+    video.stop()
     GPIO.cleanup()
