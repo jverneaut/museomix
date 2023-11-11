@@ -48,13 +48,14 @@ button_pushed = False
 
 while True:
     print("Listening")
-    if GPIO.input(10) == GPIO.HIGH and button_pushed == False:
-        button_pushed = True
-        print("Button down")
+    print(GPIO.input(10))
+    # if GPIO.input(10) == GPIO.HIGH and button_pushed == False:
+    #     button_pushed = True
+    #     print("Button down")
 
-    if GPIO.input(10) == GPIO.LOW and button_pushed == True:
-        button_pushed = False
-        print("Button up")
+    # if GPIO.input(10) == GPIO.LOW and button_pushed == True:
+    #     button_pushed = False
+    #     print("Button up")
 
     time.sleep(1)
 
