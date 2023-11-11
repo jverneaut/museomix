@@ -54,7 +54,7 @@ while True:
     print(sensor)
     # print(f"Sensor State: {sensor}")
 
-    time.sleep(0.1)
+    time.sleep(0.4)
 
     # if GPIO.input(10) == GPIO.HIGH and button_pushed == False:
     #     button_pushed = True
