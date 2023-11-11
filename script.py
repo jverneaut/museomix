@@ -10,21 +10,34 @@ videos = [
     {'media_path': 'sample-2.mp4', 'pin': 13},
 ]
 
-def sensorCallback(channel):
-    if GPIO.input(channel):
-        for item in videos:
-            if item['pin'] == channel:
-                # print('Playing video ' + str(channel))
-                item['player'].play()
-    else:
-        for item in videos:
-            if item['pin'] == channel:
-                # print('Stopping video ' + str(channel))
-                item['player'].pause()
+instance = vlc.Instance('--no-xlib--quiet')
+player = instance.media_list_player_new()
+
+media_list = []
 
 for video in videos:
-    video['player'] = vlc.MediaPlayer(video['media_path'])
+    media_list.append(video['media_path'])
 
+player.set_media_list(instance.media_list_new(media_list))
+
+def sensorCallback(channel):
+    if GPIO.input(channel):
+        index = 0
+        for item in videos:
+            if item['pin'] == channel:
+                player.play_item_at_index(index)
+                # print('Playing video ' + str(channel))
+                # item['player'].play()
+
+            index += 1
+    # else:
+    #     for item in videos:
+    #         if item['pin'] == channel:
+    #             # print('Stopping video ' + str(channel))
+    #             item['player'].pause()
+
+for video in videos:
+    # video['player'] = vlc.MediaPlayer(video['media_path'])
     GPIO.setup(video['pin'], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.add_event_detect(video['pin'], GPIO.BOTH, callback=sensorCallback, bouncetime=200)
 
