@@ -22,9 +22,9 @@ for video in videos:
         else:
             print("Play video")
 
-            for video in videos:
-                if video['pin'] == channel:
-                    vlc_player.set_media(video['media'])
+            for item in videos:
+                if item['pin'] == channel:
+                    vlc_player.set_media(item['media'])
                     vlc_player.play()
 
     GPIO.setup(video['pin'], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
