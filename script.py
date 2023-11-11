@@ -41,6 +41,9 @@ for video in videos:
     GPIO.setup(video['pin'], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.add_event_detect(video['pin'], GPIO.BOTH, callback=sensorCallback, bouncetime=200)
 
+mp = player.get_media_player()
+mp.toggle_fullscreen()
+
 try:
     while True:
         time.sleep(1)
