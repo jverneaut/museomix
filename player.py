@@ -39,7 +39,7 @@ import RPi.GPIO as GPIO
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 # GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
-GPIO.setup(17, GPIO.IN)
+GPIO.setup(12, GPIO.IN)
 
 # GPIO.add_event_detect(10,GPIO.RISING,callback=button_callback)
 
@@ -50,7 +50,7 @@ button_pushed = False
 while True:
     # print("Listening")
     # print(GPIO.input(10))
-    sensor = GPIO.input(17)
+    sensor = GPIO.input(12)
     print(f"Sensor State: {sensor}")
 
     time.sleep(0.1)
