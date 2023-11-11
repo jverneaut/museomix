@@ -19,5 +19,5 @@ for video in videos:
         else:
             print("LOW")
 
-    GPIO.setup(video['pin'], pull_up_down=GPIO.PUD_UP)
-    GPIO.add_event_detect(video['pin'], callback=sensorCallback, bouncetime=200)
+    GPIO.setup(video['pin'], pull_up_down=GPIO.PUD_DOWN)
+    GPIO.add_event_detect(video['pin'], GPIO.BOTH, callback=sensorCallback, bouncetime=200)
