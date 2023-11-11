@@ -17,7 +17,8 @@ def sensorCallback(channel):
                 item['player'].play()
     else:
         for item in videos:
-            item['player'].pause()
+            if item['pin'] == channel:
+                item['player'].play()
 
 for video in videos:
     video['player'] = vlc.MediaPlayer(video['media_path'])
