@@ -10,17 +10,17 @@ videos = [
     {'media_path': 'sample-2.mp4', 'pin': 13},
 ]
 
+def sensorCallback(channel):
+    if GPIO.input(video['pin']):
+        for item in videos:
+            if item['pin'] == channel:
+                item['player'].play()
+    else:
+        for item in videos:
+            item['player'].pause()
+
 for video in videos:
     video['player'] = vlc.MediaPlayer(video['media_path'])
-
-    def sensorCallback(channel):
-        if GPIO.input(video['pin']):
-            for item in videos:
-                if item['pin'] == channel:
-                    item['player'].play()
-        else:
-            for item in videos:
-                item['player'].pause()
 
     GPIO.setup(video['pin'], GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
     GPIO.add_event_detect(video['pin'], GPIO.BOTH, callback=sensorCallback, bouncetime=200)
