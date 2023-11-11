@@ -45,13 +45,14 @@ GPIO.setup(12, GPIO.IN)
 
 # message = input("Press enter to quit\n\n")
 
-button_pushed = False
+# button_pushed = False
 
 while True:
     # print("Listening")
     # print(GPIO.input(10))
     sensor = GPIO.input(12)
-    print(f"Sensor State: {sensor}")
+    print(sensor)
+    # print(f"Sensor State: {sensor}")
 
     time.sleep(0.1)
 
