@@ -26,6 +26,6 @@ def play_video(file_path):
 
 if __name__ == "__main__":
     # Replace 'path/to/your/video/file.mp4' with the actual path to your video file
-    video_path = 'sample.mp4'
+    video_path = 'sample-2.mp4'
 
     play_video(video_path)
