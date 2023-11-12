@@ -25,8 +25,9 @@ def main(stdscr):
     while True:
         key = stdscr.getch()
         if key == curses.KEY_LEFT:
-            stdscr.addstr(2, 0, "Left arrow key pressed")
-            vlc.play_item_at_index(0)
+            player.play_item_at_index(0)
+        if key == curses.KEY_RIGHT:
+            player.play_item_at_index(1)
         elif key == ord('q'):
             break
 
