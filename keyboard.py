@@ -1,6 +1,5 @@
 import vlc
-import pygame
-from pygame.locals import KEYDOWN, K_LEFT, K_DOWN
+import curses
 
 instance = vlc.Instance('--no-xlib --quiet')
 player = instance.media_list_player_new()
@@ -14,23 +13,21 @@ media_list.append('video-4.mp4')
 
 player.set_media_list(instance.media_list_new(media_list))
 
+def main(stdscr):
+    # Set the cursor to invisible
+    curses.curs_set(0)
 
-pygame.init()
+    # Enable keypad input
+    stdscr.keypad(True)
 
-# Set up the display (you can skip this if you don't need a window)
-screen = pygame.display.set_mode((200, 200))
-pygame.display.set_caption("Arrow Key Detection")
+    stdscr.addstr(0, 0, "Press the left arrow key (q to quit)")
 
-running = True
+    while True:
+        key = stdscr.getch()
+        if key == curses.KEY_LEFT:
+            stdscr.addstr(2, 0, "Left arrow key pressed")
+        elif key == ord('q'):
+            break
 
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == KEYDOWN:
-            if event.key == K_LEFT:
-                print("Left arrow key pressed")
-            if event.key == K_DOWN:
-                print("Down arrow key pressed")
-
-pygame.quit()
+if __name__ == "__main__":
+    curses.wrapper(main)
