@@ -13,6 +13,11 @@ media_list.append('video-4.mp4')
 
 player.set_media_list(instance.media_list_new(media_list))
 
+def on_end_reached(event):
+    player.stop()
+
+player.event_manager().event_attach(vlc.EventType.MediaPlayerEndReached, on_end_reached)
+
 def main(stdscr):
     stdscr.keypad(True)
 
