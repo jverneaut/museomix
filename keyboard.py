@@ -1,5 +1,6 @@
 import vlc
 import curses
+import time
 
 instance = vlc.Instance('--no-xlib --quiet')
 player = instance.media_list_player_new()
@@ -24,12 +25,16 @@ def main(stdscr):
     while True:
         key = stdscr.getch()
         if key == curses.KEY_LEFT:
+            time.sleep(0.5)
             player.play_item_at_index(1)
         if key == curses.KEY_UP:
+            time.sleep(0.5)
             player.play_item_at_index(2)
         if key == curses.KEY_RIGHT:
+            time.sleep(0.5)
             player.play_item_at_index(3)
         if key == curses.KEY_DOWN:
+            time.sleep(0.5)
             player.play_item_at_index(0)
         elif key == ord('q'):
             break
