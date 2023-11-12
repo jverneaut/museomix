@@ -6,8 +6,10 @@ GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BOARD)
 
 videos = [
-    {'media_path': 'sample.mp4', 'pin': 11},
+    {'media_path': 'sample-1.mp4', 'pin': 11},
     {'media_path': 'sample-2.mp4', 'pin': 13},
+    {'media_path': 'sample-3.mp4', 'pin': 15},
+    {'media_path': 'sample-4.mp4', 'pin': 16},
 ]
 
 instance = vlc.Instance('--no-xlib --quiet')
