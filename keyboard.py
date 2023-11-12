@@ -11,12 +11,12 @@ media_list.append('video-2.mp4')
 media_list.append('video-3.mp4')
 media_list.append('video-4.mp4')
 
-player.set_media_list(instance.media_list_new(media_list))
+media_list_instance = instance.media_list_new(media_list)
+player.set_media_list(media_list_instance)
 
-def on_end_reached(event):
-    player.stop()
-
-player.event_manager().event_attach(vlc.EventType.MediaPlayerEndReached, on_end_reached)
+# Set the playback mode to not loop
+media_list_instance.set_media_player(player.get_media_player())
+media_list_instance.set_playback_mode(vlc.PlaybackModeDefault)
 
 def main(stdscr):
     stdscr.keypad(True)
