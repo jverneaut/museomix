@@ -1,5 +1,6 @@
 # from pynput import keyboard
 import keyboard
+import vlc
 
 instance = vlc.Instance('--no-xlib --quiet')
 player = instance.media_list_player_new()
