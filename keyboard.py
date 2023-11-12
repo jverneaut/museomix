@@ -15,19 +15,21 @@ player.set_media_list(instance.media_list_new(media_list))
 
 def main(stdscr):
     # Set the cursor to invisible
-    curses.curs_set(0)
+    # curses.curs_set(0)
 
     # Enable keypad input
     stdscr.keypad(True)
 
-    stdscr.addstr(0, 0, "Press the left arrow key (q to quit)")
+    # stdscr.addstr(0, 0, "Press the left arrow key (q to quit)")
 
     while True:
         key = stdscr.getch()
         if key == curses.KEY_LEFT:
             stdscr.addstr(2, 0, "Left arrow key pressed")
+            vlc.play_item_at_index(0)
         elif key == ord('q'):
             break
 
 if __name__ == "__main__":
-    curses.wrapper(main)
+    # curses.wrapper(main)
+    main()
